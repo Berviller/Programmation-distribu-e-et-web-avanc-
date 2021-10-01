@@ -2,4 +2,5 @@
 
 
 Equipe 
-  - Axel Junior Mengue 
+  - Axel Junior Mengue
+  - Thomas Berviller 
