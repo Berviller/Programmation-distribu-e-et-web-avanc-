@@ -21,7 +21,7 @@ public class ProfileController {
     // + email, description, ...
     @PutMapping("/PS/profiles")
     public Profile profiles_put(@RequestBody Profile profile){
-        String email = profile.getEmail();
+        //String email = profile.getEmail();
         long new_id = counter.incrementAndGet();
         profile.setId(new_id);
         profiles.put(new_id, profile);
