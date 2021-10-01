@@ -16,8 +16,8 @@ public class ProfileServiceApplication {
 
 	@GetMapping("/hello")
 	public String hello(
-			@RequestParam(value = "name", defaultValue = "World") String name)
+			@RequestParam(value = "name", defaultValue = "World") String name, @RequestParam(value = "foo", defaultValue = "5") Long num)
 	{
-		return String.format("Hello %s!", name);
+		return String.format("Hello %s %d!", name, num+3);
 	}
 }
