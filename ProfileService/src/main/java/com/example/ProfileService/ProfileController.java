@@ -39,7 +39,7 @@ public class ProfileController {
         profiles.remove(id);
     }
 
-    @GetMapping("/PS/profiles/{id}/name")
+    @PutMapping("/PS/profiles/{id}/name")
     public void update_name(
             @PathVariable(value = "id") Long id,
             @RequestBody String name)
