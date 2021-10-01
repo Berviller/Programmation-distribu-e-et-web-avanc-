@@ -7,9 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
+@RestController
 public class ProfileController {
     private final AtomicLong counter = new AtomicLong();
     private final Map<Long, Profile> profiles = new HashMap<>();
+    
 
     @GetMapping("/PS/profiles")
     public Collection<Profile> profiles(){
