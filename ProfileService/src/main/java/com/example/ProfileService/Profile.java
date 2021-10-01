@@ -1,9 +1,12 @@
 package com.example.ProfileService;
 
+import javax.validation.constraints.NotNull;
+
 public class Profile {
-    private String email;
     private long id;
+    @NotNull
     private String name;
+    private String email;
 
     public Profile(long id, String name, String email){
         this.id = id;

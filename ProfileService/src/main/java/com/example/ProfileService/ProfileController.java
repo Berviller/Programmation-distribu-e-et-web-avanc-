@@ -2,6 +2,7 @@ package com.example.ProfileService;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -20,7 +21,7 @@ public class ProfileController {
     //PUT /PS/profiles/{id}/name
     // + email, description, ...
     @PutMapping("/PS/profiles")
-    public Profile profiles_put(@RequestBody Profile profile){
+    public Profile profiles_put(@RequestBody @Valid Profile profile){
         if (emails.contains(profile.getEmail()))
             throw new EmailInUseException(profile.getEmail());
         long new_id = counter.incrementAndGet();
