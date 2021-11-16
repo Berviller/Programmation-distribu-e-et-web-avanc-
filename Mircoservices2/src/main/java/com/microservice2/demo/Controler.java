@@ -60,20 +60,25 @@ public class Controler {
             return tk;
         }
 
+        private long token_check(String XToken){
+            for (Map.Entry<Long, Token> e : tokens.entrySet()) {
+                if (XToken.equals(e.getValue().getToken())){
+                    return e.getKey();
+                }
+            }
+            throw new MissingTokenException(XToken);
+        }
+
     @GetMapping("/AS/token")
         public long checktoken(@RequestHeader(value = "X-Token") String XToken){
-        for (Map.Entry<Long, Token> e : tokens.entrySet()) {
-            if (XToken.equals(e.getValue().getToken())){
-                return e.getKey();
-            }
-        }
-        throw new MissingTokenException(XToken);
+        return token_check(XToken);
     }
     @DeleteMapping("/AS/users/{id}/token")
     public void token_delete(
-            @PathVariable(value = "id") Long id) {
-        
+            @PathVariable(value = "id") Long id, @RequestHeader(value = "X-Token") String XToken) {
+        if (id != token_check(XToken)) {
+            throw new MissingIdException(id);
+        }
+        tokens.remove(id);
     }
-
-
 }

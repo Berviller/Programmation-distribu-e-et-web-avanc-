@@ -28,6 +28,13 @@ public class ExceptionControler {
         return ex.getMessage();
     }
 
+    @ResponseBody
+    @ExceptionHandler(MissingTokenException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String passwordExistHandler(MissingTokenException ex){
+        return ex.getMessage();
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationException(
